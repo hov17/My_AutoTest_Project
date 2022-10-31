@@ -60,5 +60,5 @@ pytestdebug.log
 
 # My files
 screen/
-logs/
+log/
 tests_results
