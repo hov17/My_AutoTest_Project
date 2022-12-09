@@ -5,6 +5,7 @@ from selenium.common.exceptions import TimeoutException
 from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.support import expected_conditions as EC
 from utilities.logger import Logger
+import time
 
 
 # Класс с базовыми методами
@@ -22,6 +23,14 @@ class BasePage():
             self.browser.get(self.url)
             self.browser.maximize_window()
             Logger.add_end_step(self.browser.current_url, method='open')
+
+    # Метод для проверки правильности url адреса
+    def is_url_address_correct(self, url):
+        with allure.step('Check url address'):
+            Logger.add_start_step(method='is_url_address_correct')
+            time.sleep(1)
+            assert url in self.browser.current_url, 'Wrong url address!'
+            Logger.add_end_step(self.browser.current_url, method='is_url_address_correct')
 
     # Метод для получения скриншота страницы
     def get_screenshot(self):
