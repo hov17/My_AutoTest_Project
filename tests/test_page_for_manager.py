@@ -1,8 +1,8 @@
 import allure
-import time
 from pages.add_customer_page import AddCustomerPage
 from pages.login_page import LoginPage
 from pages.manager_home_page import ManagerHomePage
+from pages.open_account_page import OpenAccountPage
 
 
 # Тест авторизации менеджера в личный кабинет
@@ -16,6 +16,7 @@ def test_manager_login(browser):
     page.get_screenshot()
 
 
+# Тест добавления нового пользователя
 @allure.description('Add new customer')
 def test_add_new_customer(browser):
     url = 'https://www.globalsqa.com/angularJs-protractor/BankingProject/#/login'
@@ -26,3 +27,16 @@ def test_add_new_customer(browser):
     page.go_to_add_customer_page()
     page = AddCustomerPage(browser, browser.current_url)
     page.add_new_customer()
+
+
+# Тест открытия нового счета для пользователя
+@allure.description('Open new account for user')
+def test_open_new_account_for_user(browser):
+    url = 'https://www.globalsqa.com/angularJs-protractor/BankingProject/#/login'
+    page = LoginPage(browser, url, timeout=10)
+    page.open()
+    page.manager_login_in_system()
+    page = ManagerHomePage(browser, browser.current_url, timeout=10)
+    page.go_to_open_account_page()
+    page = OpenAccountPage(browser, browser.current_url, timeout=10)
+    page.open_new_account_for_user()

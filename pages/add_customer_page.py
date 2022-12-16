@@ -7,6 +7,7 @@ from utilities.logger import Logger
 
 
 class AddCustomerPage(BasePage):
+    # Метод добавления нового пользователя
     def add_new_customer(self):
         with allure.step('Add new customer'):
             Logger.add_start_step(method='add_new_customer')
@@ -18,5 +19,6 @@ class AddCustomerPage(BasePage):
             assert self.browser.switch_to.alert.text == 'Customer added successfully with customer id :6', \
                 'Wrong text message!'
             self.browser.switch_to.alert.accept()
+            Logger.add_end_step(self.browser.current_url, method='add_new_customer')
 
 
