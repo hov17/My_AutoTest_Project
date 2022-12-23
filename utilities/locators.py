@@ -8,6 +8,7 @@ class LoginPageLocators():
 class ManagerHomePageLocators():
     ADD_CUSTOMER_BUTTON = (By.XPATH, '//button[@ng-class="btnClass1"]')
     OPEN_ACCOUNT_BUTTON = (By.XPATH, '//button[@ng-class="btnClass2"]')
+    CUSTOMERS_BUTTON = (By.XPATH, '//button[@ng-class="btnClass3"]')
 
 
 class AddCustomerPageLocators():
@@ -23,3 +24,8 @@ class OpenAccountPageLocators():
     CURRENCY_DROPDOWN = (By.XPATH, '//select[@id="currency"]')
     POUND_CURRENCY = (By.XPATH, '//option[@value="Pound"]')
     PROCESS_BUTTON = (By.XPATH, '//button[@type="submit"]')
+
+
+class CustomersPageLocators():
+    SEARCHING_FIELD = (By.XPATH, '//input[@ng-model="searchCustomer"]')
+    DELETE_CUSTOMER_BUTTON = (By.XPATH, '//button[@ng-click="deleteCust(cust)"]')

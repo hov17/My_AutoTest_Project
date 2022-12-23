@@ -1,8 +1,11 @@
 import allure
+import names
+import random
 from pages.add_customer_page import AddCustomerPage
 from pages.login_page import LoginPage
 from pages.manager_home_page import ManagerHomePage
 from pages.open_account_page import OpenAccountPage
+from pages.customers_page import CustomersPage
 
 
 # Тест авторизации менеджера в личный кабинет
@@ -26,7 +29,7 @@ def test_add_new_customer(browser):
     page = ManagerHomePage(browser, browser.current_url, timeout=10)
     page.go_to_add_customer_page()
     page = AddCustomerPage(browser, browser.current_url)
-    page.add_new_customer()
+    page.add_new_customer(names.get_first_name(), names.get_last_name(), random.randint(100000, 999999))
 
 
 # Тест открытия нового счета для пользователя
@@ -40,3 +43,21 @@ def test_open_new_account_for_user(browser):
     page.go_to_open_account_page()
     page = OpenAccountPage(browser, browser.current_url, timeout=10)
     page.open_new_account_for_user()
+
+
+# Тест удаления пользователя из списка
+@allure.description('Delete user')
+def test_delete_user(browser):
+    url = 'https://www.globalsqa.com/angularJs-protractor/BankingProject/#/login'
+    page = LoginPage(browser, url, timeout=10)
+    page.open()
+    page.manager_login_in_system()
+    page = ManagerHomePage(browser, browser.current_url, timeout=10)
+    page.go_to_add_customer_page()
+    page = AddCustomerPage(browser, browser.current_url, timeout=10)
+    page.add_new_customer('test_name', 'test_surname', '123456')
+    page = ManagerHomePage(browser, browser.current_url, timeout=10)
+    page.go_to_customers_page()
+    page = CustomersPage(browser, browser.current_url, timeout=10)
+    page.delete_user('test_name')
+    page.get_screenshot()
