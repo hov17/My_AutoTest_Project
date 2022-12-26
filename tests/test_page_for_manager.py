@@ -1,11 +1,11 @@
 import allure
 import names
 import random
-from pages.add_customer_page import AddCustomerPage
+from pages.Manager.add_customer_page import AddCustomerPage
 from pages.login_page import LoginPage
-from pages.manager_home_page import ManagerHomePage
-from pages.open_account_page import OpenAccountPage
-from pages.customers_page import CustomersPage
+from pages.Manager.manager_home_page import ManagerHomePage
+from pages.Manager.open_account_page import OpenAccountPage
+from pages.Manager.customers_page import CustomersPage
 
 
 # Тест авторизации менеджера в личный кабинет
@@ -42,7 +42,7 @@ def test_open_new_account_for_user(browser):
     page = ManagerHomePage(browser, browser.current_url, timeout=10)
     page.go_to_open_account_page()
     page = OpenAccountPage(browser, browser.current_url, timeout=10)
-    page.open_new_account_for_user()
+    page.open_new_account_for_customer()
 
 
 # Тест удаления пользователя из списка
@@ -59,5 +59,5 @@ def test_delete_user(browser):
     page = ManagerHomePage(browser, browser.current_url, timeout=10)
     page.go_to_customers_page()
     page = CustomersPage(browser, browser.current_url, timeout=10)
-    page.delete_user('test_name')
+    page.delete_customer('test_name')
     page.get_screenshot()

@@ -6,7 +6,7 @@ from utilities.locators import OpenAccountPageLocators
 
 class OpenAccountPage(BasePage):
     # Метод для открытия нового счета
-    def open_new_account_for_user(self):
+    def open_new_account_for_customer(self):
         with allure.step('Open new account'):
             Logger.add_start_step(method='open_new_account_for_user')
             self.browser.find_element(*OpenAccountPageLocators.CUSTOMER_DROPDOWN).click()

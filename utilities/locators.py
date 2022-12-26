@@ -3,6 +3,7 @@ from selenium.webdriver.common.by import By
 
 class LoginPageLocators():
     MANAGER_LOGIN_BUTTON = (By.XPATH, '//div[@class="center"][2]/button')
+    CUSTOMER_LOGIN_BUTTON = (By.XPATH, '//div[@class="center"][1]/button')
 
 
 class ManagerHomePageLocators():
@@ -29,3 +30,12 @@ class OpenAccountPageLocators():
 class CustomersPageLocators():
     SEARCHING_FIELD = (By.XPATH, '//input[@ng-model="searchCustomer"]')
     DELETE_CUSTOMER_BUTTON = (By.XPATH, '//button[@ng-click="deleteCust(cust)"]')
+
+
+class CustomersAuthorizationPageLocators():
+    CUSTOMERS_DROPDOWN = (By.XPATH, '//select[@id="userSelect"]')
+    CUSTOMER_ALBUS_DUMBLEDORE = (By.XPATH, '//select[@id="userSelect"]/option[text()="Albus Dumbledore"]')
+    LOGIN_BUTTON = (By.XPATH, '//button[@type="submit"]')
+
+class CustomerAccountPageLocators():
+    LOGOUT_BUTTON = (By.XPATH, '//button[@class="btn logout"]')

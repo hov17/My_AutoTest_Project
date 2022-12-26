@@ -6,7 +6,7 @@ from utilities.logger import Logger
 
 class CustomersPage(BasePage):
     # Метод для удаления пользователя
-    def delete_user(self, first_name):
+    def delete_customer(self, first_name):
         with allure.step('Delete user'):
             Logger.add_start_step('delete_user')
             self.browser.find_element(*CustomersPageLocators.SEARCHING_FIELD).send_keys(first_name)
