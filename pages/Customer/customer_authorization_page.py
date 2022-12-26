@@ -6,7 +6,7 @@ from utilities.locators import CustomerAccountPageLocators
 from utilities.logger import Logger
 
 
-class CustomerSelectionPage(BasePage):
+class CustomerAuthorizationPage(BasePage):
     # Метод выбора пользователя
     def customer_authorization(self, customer_name):
         with allure.step('Customer authorization'):
